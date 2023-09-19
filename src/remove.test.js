@@ -433,4 +433,55 @@ describe('remove', () => {
       foo: [{ key: 'B Submit Error' }]
     })
   })
+
+  it('should result in an empty array if all values are removed', () => {
+    const array = ['a']
+    // implementation of changeValue taken directly from Final Form
+    const changeValue = (state, name, mutate) => {
+      const before = getIn(state.formState.values, name)
+      const after = mutate(before)
+      state.formState.values = setIn(state.formState.values, name, after) || {}
+    }
+    function blur0() {}
+    function change0() {}
+    function focus0() {}
+    const state = {
+      formState: {
+        values: {
+          foo: array,
+          anotherField: 42
+        }
+      },
+      fields: {
+        'foo[0]': {
+          name: 'foo[0]',
+          blur: blur0,
+          change: change0,
+          focus: focus0,
+          touched: true,
+          error: 'A Error'
+        },
+        anotherField: {
+          name: 'anotherField',
+          touched: false
+        }
+      }
+    }
+    const returnValue = remove(['foo', 0], state, { changeValue, getIn, setIn })
+    expect(returnValue).toBe('a')
+    expect(state).toEqual({
+      formState: {
+        values: {
+          foo: [],
+          anotherField: 42
+        }
+      },
+      fields: {
+        anotherField: {
+          name: 'anotherField',
+          touched: false
+        }
+      }
+    })
+  })
 })

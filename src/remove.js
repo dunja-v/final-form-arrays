@@ -14,12 +14,14 @@ const remove: Mutator<any> = (
       return array
     }
 
+    if (Array.isArray(array) && array.length === 0) {
+      return []
+    }
+
     const copy = [...array]
     returnValue = copy[index]
     copy.splice(index, 1)
-    return copy.length > 0
-      ? copy
-      : undefined
+    return copy
   })
 
   // now we have to remove any subfields for our index,
