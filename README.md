@@ -1,5 +1,7 @@
 # 🏁 Final Form Arrays
 
+Fork of final-form-arrays repo with a small change in the remove function: the field value is not set to undefined when the last element is removed from the array. Instead, it's left as an empty array.
+
 [![NPM Version](https://img.shields.io/npm/v/final-form-arrays.svg?style=flat)](https://www.npmjs.com/package/final-form-arrays)
 [![NPM Downloads](https://img.shields.io/npm/dm/final-form-arrays.svg?style=flat)](https://www.npmjs.com/package/final-form-arrays)
 [![Build Status](https://travis-ci.org/final-form/final-form-arrays.svg?branch=master)](https://travis-ci.org/final-form/final-form-arrays)
