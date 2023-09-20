@@ -5,6 +5,7 @@ coverage
 flow-coverage
 node_modules
 lib
+dist
 es
 npm-debug.log
 .DS_Store
